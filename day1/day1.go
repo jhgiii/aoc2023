@@ -42,24 +42,6 @@ func parseIntegers(input string) int {
 	return result
 }
 
-/*
-For Part 2, I am continuing the string manipulation strategy and plan on leveraging the strings.Index() function to find the index of the word
-form of each digit by iterating over a map[string]int where each key is the word-form form of each digit and the value is the integer value
-
-	  The index returned, and the corresponding integer that is mapped to the word-form will be inserted into a map[int]int where the key is the index location
-	  and the value is the corresponding integer representation of the digit.
-
-	  For parsing Ints we will copy the part1 logic, but rather than use a []int to track, we will use a map[int]int, where the key is the index, in the line, and the
-	  value is the integer value parsed.
-
-	  We will then combine these maps using Go 1.21's maps.Copy() function. Sort this merged map by its keys (index where a digit was located), iterate through these
-	  indicies, and return a []int where each element is the integer value found in order.
-
-	  ie:
-
-	  Given "xtwone3four", we will see an []int with [2 1 3 4]
-	We can then simply accumulate (10 * []int[0] + []int[len(x)-1]
-*/
 func Part2(puzzleInput []string) {
 	tally := 0
 	for _, line := range puzzleInput {
@@ -121,12 +103,6 @@ func part2CombineMaps(intNum, strNum map[int]int) []int {
 	for _, k := range keys {
 		acc = append(acc, intNum[k])
 	}
-
 	return []int{acc[0], acc[len(acc)-1]}
 
 }
-
-//func part2ConvertInts(ints []int) (int, error) {
-// 	result := strconv.Itoa(ints[0]) + strconv.Itoa(ints[1])
-// 	return strconv.Atoi(result)
-// }
