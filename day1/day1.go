@@ -48,8 +48,7 @@ func Part2(puzzleInput []string) {
 
 		ints := part2ParseInts(line)
 		strs := part2ParseStrings(line)
-		res := part2CombineMaps(ints, strs)
-		tally += (10*res[0] + res[1])
+		tally += part2CombineMaps(ints, strs)
 
 	}
 	fmt.Println(tally)
@@ -80,7 +79,7 @@ func part2ParseStrings(line string) map[int]int {
 }
 func indexOfSubstring(str, subStr string) []int {
 	var acc []int
-	for i, _ := range str {
+	for i := range str {
 		if i+len(subStr) > len(str) {
 			continue
 		}
@@ -90,7 +89,7 @@ func indexOfSubstring(str, subStr string) []int {
 	}
 	return acc
 }
-func part2CombineMaps(intNum, strNum map[int]int) []int {
+func part2CombineMaps(intNum, strNum map[int]int) int {
 	var acc []int
 	maps.Copy(intNum, strNum)
 	//Sort intNum by Keys
@@ -103,6 +102,6 @@ func part2CombineMaps(intNum, strNum map[int]int) []int {
 	for _, k := range keys {
 		acc = append(acc, intNum[k])
 	}
-	return []int{acc[0], acc[len(acc)-1]}
+	return (10 * acc[0]) + acc[len(acc)-1]
 
 }
