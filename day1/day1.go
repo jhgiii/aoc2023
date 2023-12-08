@@ -5,7 +5,6 @@ import (
 	"maps"
 	"sort"
 	"strconv"
-	"strings"
 )
 
 var atoi = map[string]int{
@@ -89,13 +88,26 @@ func part2ParseInts(line string) map[int]int {
 func part2ParseStrings(line string) map[int]int {
 	acc := make(map[int]int)
 	for strnum, intnum := range atoi {
-		if (strings.Index(line, strnum)) >= 0 {
-			acc[strings.Index(line, strnum)] = intnum
+		idx := indexOfSubstring(line, strnum)
+		for _, index := range idx {
+			acc[index] = intnum
+		}
+
+	}
+	return acc
+}
+func indexOfSubstring(str, subStr string) []int {
+	var acc []int
+	for i, _ := range str {
+		if i+len(subStr) > len(str) {
+			continue
+		}
+		if str[i:i+len(subStr)] == subStr {
+			acc = append(acc, i)
 		}
 	}
 	return acc
 }
-
 func part2CombineMaps(intNum, strNum map[int]int) []int {
 	var acc []int
 	maps.Copy(intNum, strNum)
