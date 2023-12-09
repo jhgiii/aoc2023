@@ -20,3 +20,28 @@ In this example, the calibration values of these four lines are 12, 38, 15, and 
   - Store integer on to a slice of integers
   - Repeat until all lines are processed
 - Sum up the slice of integers
+** Part 2
+Puzzle Description:
+#+begin_src 
+Your calculation isn't quite right. It looks like some of the digits are actually spelled out with letters: one, two, three, four, five, six, seven, eight, and nine also count as valid "digits".
+
+Equipped with this new information, you now need to find the real first and last digit on each line. For example:
+
+two1nine
+eightwothree
+abcone2threexyz
+xtwone3four
+4nineeightseven2
+zoneight234
+7pqrstsixteen
+In this example, the calibration values are 29, 83, 13, 24, 42, 14, and 76. Adding these together produces 281.
+#+end_src
+*** Algorithm 
+- Read in a line
+  - Parse out integers in the line, add the index of the integers, and the integer value to a map[int]int
+  - Parse out word-form of each digit, insert index of the first letter, and the integer value to a map[int]int
+  - Combine the two map[int]int into a single map[int]int
+  - Sort the Keys (index of digit in the line) of this new map in ascending order
+  - Combine the first and last value in the map[int]int to form the calibration value
+  - Add this value to a tally 
+  - Perform on all lines
