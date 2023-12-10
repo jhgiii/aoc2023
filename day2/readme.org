@@ -20,3 +20,21 @@ In the example above, games 1, 2, and 5 would have been possible if the bag had 
 
 Determine which games would have been possible if the bag had been loaded with only 12 red cubes, 13 green cubes, and 14 blue cubes. What is the sum of the IDs of those games?
 #+end_src
+*** Algorithm
+If we consider a possible game to only have the following properties:
+#+begin_src 
+Where b,r,g are "blue", "red", "g" respectively:
+f(b) <= 14
+f(r) <= 12
+f(g) <= 13
+#+end_src
+
+Then we will have to:
+- iterate through each Game
+- Note its ID
+- Parse out the sub games
+- Parse out the colors shown in each sub game
+- Check if the number of each color fits our function definition
+  - If it fits, put the game ID in a list
+  - If it does not fit, continute to the next game
+- Sum the finaly list of conforming game IDs

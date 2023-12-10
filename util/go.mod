@@ -1,3 +1,3 @@
 module util
 
-go 1.18
+go 1.21.5
