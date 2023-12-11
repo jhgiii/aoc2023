@@ -27,5 +27,11 @@ func main() {
 	fmt.Println("Day 2, Part 1 Puzzle Result")
 	day2Part1Input, _ := util.ParsePuzzleInput("day2/puzzleInupt")
 	day2.Part1(day2Part1Input)
+	fmt.Println("Day 2, Part 2 Test Result")
+	day2Part2Test, _ := util.ParsePuzzleInput("day2/part1TestInput")
+	day2.Part2(day2Part2Test)
+	fmt.Println("Day 2, Part 2 Puzzle Result")
+	day2Part2Input, _ := util.ParsePuzzleInput("day2/puzzleInupt")
+	day2.Part2(day2Part2Input)
 
 }

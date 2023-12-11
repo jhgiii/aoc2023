@@ -74,3 +74,32 @@ func Part1(puzzle []string) {
 	}
 	fmt.Println(tally)
 }
+
+func Part2(puzzle []string) {
+	tally := 0
+	for _, line := range puzzle {
+		var g game
+		g.parseGame(line)
+		maxSubGames := findMax(g.subgames)
+		power := maxSubGames.blue * maxSubGames.red * maxSubGames.green
+		tally += power
+	}
+	fmt.Println(tally)
+
+}
+
+func findMax(s []subgame) subgame {
+	var redMax, blueMax, greenMax int
+	for _, game := range s {
+		if game.blue > blueMax {
+			blueMax = game.blue
+		}
+		if game.red > redMax {
+			redMax = game.red
+		}
+		if game.green > greenMax {
+			greenMax = game.green
+		}
+	}
+	return subgame{red: redMax, blue: blueMax, green: greenMax}
+}
